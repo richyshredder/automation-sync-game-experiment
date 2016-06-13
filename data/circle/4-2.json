@@ -1,0 +1,8 @@
+[
+{"count": 4, "example": 35757, "length": 5, "optimal": "baaab"},
+{"count": 4, "example": 53037, "length": 5, "optimal": "baabb"},
+{"count": 4, "example": 50093, "length": 5, "optimal": "babab"},
+{"count": 8, "example": 4077, "length": 5, "optimal": "bbaab"},
+{"count": 12, "example": 50157, "length": 3, "optimal": "bab"},
+{"count": 4, "example": 53229, "length": 1, "optimal": "b"}
+]

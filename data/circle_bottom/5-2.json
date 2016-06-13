@@ -1,0 +1,11 @@
+[
+{"count": 1, "example": 2655050, "length": 9, "optimal": "bbbaaabab"},
+{"count": 2, "example": 8501925, "length": 7, "optimal": "babbaab"},
+{"count": 8, "example": 4439425, "length": 5, "optimal": "babab"},
+{"count": 1, "example": 542550, "length": 5, "optimal": "babbb"},
+{"count": 9, "example": 8345675, "length": 5, "optimal": "bbaab"},
+{"count": 1, "example": 539425, "length": 5, "optimal": "bbabb"},
+{"count": 8, "example": 2486300, "length": 3, "optimal": "bab"},
+{"count": 2, "example": 2720675, "length": 3, "optimal": "bbb"},
+{"count": 1, "example": 455050, "length": 1, "optimal": "b"}
+]

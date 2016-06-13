@@ -9,15 +9,14 @@ ConfigurationActionCreator =
       params: params
     
   
-  request: (automatonSize, abcSize, bottom) ->
+  request: (automatonSize, abcSize, series) ->
     console.info arguments
-    prefix = if bottom then 'bottom' else 'common'
     Dispatcher.dispatch
       type: ActionTypes.REQUEST
       params:
         automatonSize: automatonSize
         abcSize: abcSize
-    $.getJSON "/data/#{prefix}/#{automatonSize}-#{abcSize}.json", (data) ->
+    $.getJSON "/data/#{series}/#{automatonSize}-#{abcSize}.json", (data) ->
       Dispatcher.dispatch
         type: ActionTypes.AUTOMATONS_INDEX
         params:

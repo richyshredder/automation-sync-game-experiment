@@ -8,25 +8,30 @@ class FormComponent extends BaseComponent
     super props
 
   automatonSizeOptions: =>
-    _([2..7]).map (i) -> 
+    _([2..9]).map (i) -> 
       {value: i, label: i}
 
   abcSizeOptions: =>
-    a = [0, 0, 4, 4, 4, 4, 3, 2]
+    a = [0, 0, 4, 4, 4, 4, 3, 2, 2, 2, 2]
     
     _([2..a[@state.automatonSize]]).map (i) ->
       {value: i, label: "a-#{String.fromCharCode('a'.charCodeAt(0) + i - 1)} (#{i})"}
 
+  seriesOptions: =>
+    [
+      {value: 'common', label: 'common'},
+      {value: 'circle', label: 'circle'},
+      {value: 'bottom', label: 'bottom'},
+      {value: 'circle_bottom', label: 'circle_bottom'}
+    ]
+
   handleForm: (e) =>
     e.preventDefault()
     if @state.automatonSize && @state.abcSize
-      ConfigurationActionCreator.request @state.automatonSize, @state.abcSize, @state.bottom
+      ConfigurationActionCreator.request @state.automatonSize, @state.abcSize, @state.series
 
   handleSelect: (key, e) =>
     @setState "#{key}": e?.value
-
-  handleBottoms: =>
-    @setState bottom: !@state.bottom
 
   # componentDidMount: ->
   #   ConfigurationActionCreator.request 2, 2  
@@ -34,26 +39,23 @@ class FormComponent extends BaseComponent
   render: ->
     <form onSubmit=@handleForm>
       <div className='row'>
-        <div className='col-md-6'>
+        <div className='col-md-4'>
           <Select value=@state.automatonSize 
                   options=@automatonSizeOptions()
                   placeholder='Automaton size'
                   onChange={_(@handleSelect).partial('automatonSize', _)} />
         </div>
-        <div className='col-md-6'>
+        <div className='col-md-4'>
           <Select value=@state.abcSize 
                   options=@abcSizeOptions()
                   placeholder='ABC size'
                   onChange={_(@handleSelect).partial('abcSize', _)} />
         </div>
-        <div className='col-md-2'>
-            <input  type='checkbox'
-                    value=@state.bottom
-                    id='bottom'
-                    onChange=@handleBottoms
-            />
-            {' '}
-            <label htmlFor='bottom'>{'With bottom'}</label>
+        <div className='col-md-4'>
+          <Select value=@state.series 
+                  options=@seriesOptions()
+                  placeholder='series'
+                  onChange={_(@handleSelect).partial('series', _)} />            
         </div>
       </div>
       <br/>
